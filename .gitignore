@@ -1,0 +1,7 @@
+database-journal
+.venv
+.idea
+.ruff_cache
+*/__pacache__
+*/*/__pacache__
+*/*/*/__pacache__
