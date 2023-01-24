@@ -2,6 +2,6 @@ database-journal
 .venv
 .idea
 .ruff_cache
-*/__pacache__
-*/*/__pacache__
-*/*/*/__pacache__
+*/__pycache__
+*/*/__pycache__
+*/*/*/__pycache__
