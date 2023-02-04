@@ -1,10 +1,10 @@
 from typing import Generic, Type, TypeVar
 
 from pydantic.main import BaseModel
-from sqlalchemy import desc, func
+from sqlalchemy import desc
 from sqlalchemy.orm import Session
 
-from src.data.database import Base, SessionManager
+from src.data.database import Base
 from src.data.interfaces import IRepository
 
 ModelType = TypeVar("ModelType", bound=Base)
@@ -26,7 +26,7 @@ class BaseRepository(IRepository, Generic[ModelType, OutSchema]):
     def create(self, data: dict) -> OutSchema:
         obj = self.model(**data)
         self._session.add(obj)
-        self._session.flush()
+        self._session.commit()
         return self.schema.from_orm(
             self._session.query(self.model).where(self.model.id == obj.id).one()
         )

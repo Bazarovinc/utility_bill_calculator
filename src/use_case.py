@@ -163,7 +163,7 @@ class UseCase:
             return
         elif (
             current_measurement.cold_measurement <= last_month_data.cold_measurement
-            or current_measurement.hot_measurement <= last_month_data.cold_measurement
+            or current_measurement.hot_measurement <= last_month_data.hot_measurement
             or current_measurement.electricity_measurement
             <= last_month_data.electricity_measurement
         ):

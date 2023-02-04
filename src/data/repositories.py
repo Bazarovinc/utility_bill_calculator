@@ -1,7 +1,3 @@
-from datetime import datetime
-
-from sqlalchemy import extract
-
 from src.data.base_repository import BaseRepository
 from src.data.interfaces import IMeasurementsRepo, ITariffsRepo
 from src.data.models import Measurements, Tariffs
@@ -14,7 +10,7 @@ class MeasurementsRepo(IMeasurementsRepo, BaseRepository[Measurements, Measureme
 
     def delete(self, id: int) -> None:
         self._session.query(self.model).where(self.model.id == id).delete()
-        self._session.flush()
+        self._session.commit()
 
 
 class TariffsRepo(ITariffsRepo, BaseRepository[Tariffs, TariffsOutSchema]):

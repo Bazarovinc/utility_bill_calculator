@@ -19,5 +19,9 @@ class SessionManager:
         return self._session
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
-        self._session.commit()
         self._session.close()
+
+
+def get_session():
+    with SessionManager() as session:
+        yield session
